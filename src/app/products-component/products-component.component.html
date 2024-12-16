@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <input type="text" name="name" ngModel required>
+    <input type="text" name="description" ngModel required>
+    <input type="number" name="price" ngModel required min="0">
+    <button type="submit" [disabled]="productForm.invalid">Ajouter</button>
+  </form>
+
+         <div *ngIf="productForm.controls['name']?.invalid && productForm.controls['name']?.touched">
+                    Le champ "Nom" est obligatoire.
+           </div>
+  <div *ngIf="productForm.controls['description']?.invalid && productForm.controls['description']?.touched">
+    Le champ "Description" est obligatoire.
+  </div>
+          <div *ngIf="productForm.controls['price']?.invalid && productForm.controls['price']?.touched">
+                     Le prix est strictement positif.
+  </div>
+  
+  
